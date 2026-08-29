@@ -1,0 +1,17 @@
+<button (click)="getQuote()">New Quote</button>
+@if(isLoading()){
+  <p>loading please wait ...</p>
+} @else if (!isLoading()) {
+  @if(error()){
+    <p>Error loading quotes</p>
+  } @else {
+    <p>{{quote()?.author}}: {{quote()?.quote}}</p>
+  }
+}
+
+<button (click)="login()">Login</button>
+<button (click)="logout()">Logout</button>
+
+<p>{{authService.isLoggedIn()}}</p>
+
+<a routerLink="/bookmarks" class="cursor-pointer">Go to Bookmarks</a>

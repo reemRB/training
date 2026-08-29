@@ -1,0 +1,10 @@
+<p>Bookmarks</p>
+@if(!bookmarkStore.isLoading()){
+
+  @for(bookmark of bookmarkStore.bookmarks(); track bookmark.id){
+    <p>{{bookmark.title}}</p> 
+    <button (click)="bookmarkStore.removeBookmark(bookmark.id)">remove</button>
+  }
+} @else {
+  <p>Loading bookmarks...</p>
+}
