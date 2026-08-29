@@ -49,11 +49,9 @@ export const BookmarkStore = signalStore(
         switchMap((bookmarkId) => {
           return bookmarkService.removeBookmark(bookmarkId).pipe(
             tap(() => {
-              const updatedBookmarks = myStore
-                .bookmarks()
-                .filter((bookmark) => {
-                  return bookmark.id !== bookmarkId;
-                });
+              const updatedBookmarks = myStore.bookmarks().filter((bookmark) => {
+                return bookmark.id !== bookmarkId;
+              });
               patchState(myStore, {
                 isLoading: false,
                 bookmarks: updatedBookmarks,

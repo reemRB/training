@@ -1,11 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { QuoteService } from './quote.service';
-import {
-  HttpTestingController,
-  provideHttpClientTesting,
-} from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
-import { catchError, tap } from 'rxjs';
 
 describe('QuoteService', () => {
   let service: QuoteService;
@@ -40,19 +36,14 @@ describe('QuoteService', () => {
 
   // ! This is not needed because error is not implemented on the get method
   it('should return an error when the quote', () => {
-    service
-      .getRandomQuote()
-      .subscribe(
-        {
-          next: () => fail('expected an error to be thrown'),
-          error: (error) => {
-            expect(error).toBeDefined();
-          }
-          
-        }
-      );
-      const req = httpMock.expectOne('https://dummyjson.com/quotes/random');
-      expect(req.request.method).toBe('GET');
-      req.error(new ProgressEvent('error'));
+    service.getRandomQuote().subscribe({
+      next: () => fail('expected an error to be thrown'),
+      error: (error) => {
+        expect(error).toBeDefined();
+      },
+    });
+    const req = httpMock.expectOne('https://dummyjson.com/quotes/random');
+    expect(req.request.method).toBe('GET');
+    req.error(new ProgressEvent('error'));
   });
 });

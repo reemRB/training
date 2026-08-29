@@ -1,10 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { BookmarkStore } from './bookmarks.store';
 import { provideHttpClient } from '@angular/common/http';
-import {
-  HttpTestingController,
-  provideHttpClientTesting,
-} from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('Bookmarks store', () => {
   let bookmarkStore: InstanceType<typeof BookmarkStore>;

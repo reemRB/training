@@ -1,9 +1,9 @@
 export type Bookmark = {
-  id: number, 
-  title: string, 
-  url: string
-  body: string,
-}
+  id: number;
+  title: string;
+  url: string;
+  body: string;
+};
 
 export interface DummyJsonPostsResponse {
   posts: Bookmark[];

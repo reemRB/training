@@ -4,30 +4,28 @@ import { map, Observable } from 'rxjs';
 import { Bookmark, DummyJsonPostsResponse } from './bookmark.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BookmarkService {
   private http = inject(HttpClient);
-  private baseurl = 'https://dummyjson.com/posts'
+  private baseurl = 'https://dummyjson.com/posts';
 
+  constructor() {}
 
-  constructor() { }
-
-  public getBookmarks(): Observable<Bookmark[]>{
+  public getBookmarks(): Observable<Bookmark[]> {
     return this.http.get<DummyJsonPostsResponse>(`${this.baseurl}?limit=5`).pipe(
-      map((response)=>
-        response.posts.map((post)=>({
+      map((response) =>
+        response.posts.map((post) => ({
           id: post.id,
           title: post.title,
           body: post.body,
           url: `https://example.com/post/${post.id}`,
-          
-        }))
-      )
-    )
+        })),
+      ),
+    );
   }
 
-  public removeBookmark(bookmarkId: number): Observable<void>{
-    return this.http.delete<void>(`${this.baseurl}/${bookmarkId}`)
+  public removeBookmark(bookmarkId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseurl}/${bookmarkId}`);
   }
 }

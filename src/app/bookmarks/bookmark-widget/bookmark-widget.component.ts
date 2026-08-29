@@ -6,14 +6,11 @@ import { BookmarkStore } from '../stores/bookmarks.store';
   standalone: true,
   imports: [],
   templateUrl: './bookmark-widget.component.html',
-  styleUrl: './bookmark-widget.component.scss'
+  styleUrl: './bookmark-widget.component.scss',
 })
-export class BookmarkWidgetComponent implements OnInit{
+export class BookmarkWidgetComponent implements OnInit {
   public bookmarkStore = inject(BookmarkStore);
   ngOnInit(): void {
     this.bookmarkStore.loadBookmark();
   }
-
-  
-
 }
