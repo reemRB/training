@@ -1,0 +1,19 @@
+<button (click)="getWeatherData({ lat: 52.52, lon: 13.41 })">Berlin</button>
+<button (click)="getWeatherData({ lat: 51.51, lon: -0.13 })">London</button>
+<button (click)="getWeatherData({ lat: 40.71, lon: -74.01 })">New york</button>
+<button (click)="getWeatherData({ lat: 35.68, lon: 139.69 })">Tokyo</button>
+
+@if (weatherStore.isLoading()) {
+  <p>Loading temprature...</p>
+} @else {
+  @if (weatherStore.error()) {
+    <p>Error loading the temprature</p>
+  } @else {
+    @if (weatherStore.weatherData(); as weather) {
+      <p>Temperature: {{ weather.current_weather.temperature }}</p>
+      <p>Time: {{ weather.current_weather.time }}</p>
+    } @else {
+      <p>No data found</p>
+    }
+  }
+}

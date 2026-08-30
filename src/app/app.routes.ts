@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/bookmark.guards';
+import { weatherGuard } from './core/guards/weather.guard';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,14 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./recipes/recipe-finder/recipe-finder.component').then(
         (m) => m.RecipeFinderComponent,
+      ),
+  },
+  {
+    path: 'weather',
+    canActivate: [weatherGuard],
+    loadComponent: () =>
+      import('./weather/weather-dashboard/weather-dashboard.component').then(
+        (m) => m.WeatherDashboardComponent,
       ),
   },
 ];
