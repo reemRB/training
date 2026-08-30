@@ -15,6 +15,13 @@ export const routes: Routes = [
         (m) => m.BookmarkWidgetComponent,
       ),
   },
+  {
+    path: 'recipe-finder',
+    loadComponent: () =>
+      import('./recipes/recipe-finder/recipe-finder.component').then(
+        (m) => m.RecipeFinderComponent,
+      ),
+  },
 ];
 
 //default path with /quote
